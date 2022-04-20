@@ -6,11 +6,14 @@ const routes = require('./routes') // import
 
 // Criando app
 const app = express() 
+// dotenv
+require('dotenv').config
+
+const DB_USER = process.env.DB_USER
+const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD)
 
 // connect 
-// user: omnistack
-// password: vRiZAqVKmSv6qy6
-mongoose.connect('mongodb+srv://omnistack:vRiZAqVKmSv6qy6@omnistack.p0kcr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@omnistack.p0kcr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
     // configurações do mongo
     useNewUrlParser: true,
     useUnifiedTopology: true,
